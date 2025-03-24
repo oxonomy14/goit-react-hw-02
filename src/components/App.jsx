@@ -2,25 +2,29 @@ import { useState } from "react";
 import reactLogo from "../assets/react.svg";
 import "./App.css";
 
-import userData from "../assets/userData.json";
-import friends from "../assets/friends.json";
-import transactions from "./transactions.json";
-import Profile from "./Profile/Profile";
-import FriendList from "./FriendList/FriendList";
-import TransactionHistory from "./TransactionHistory/TransactionHistory";
+import Description from "./Description/Description";
+import Option from "./Option/Option";
+import Feedback from "./Feedback/Feedback";
 
 const App = () => {
+  const [views, setViews] = useState({
+    good: 0,
+    neutral: 0,
+    bad: 0,
+  });
+
+  const updateFeedback = (feedbackType) => {
+    setViews((prev) => ({
+      ...prev,
+      [feedbackType]: prev[feedbackType] + 1,
+    }));
+  };
+
   return (
     <>
-      <Profile
-        name={userData.username}
-        tag={userData.tag}
-        location={userData.location}
-        image={userData.avatar}
-        stats={userData.stats}
-      />
-      <FriendList friends={friends} />
-      <TransactionHistory items={transactions} />
+      <Description />
+      <Option updateFeedback={updateFeedback} />
+      <Feedback {...views} />
     </>
   );
 };
