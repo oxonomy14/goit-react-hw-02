@@ -14,17 +14,31 @@ const App = () => {
   });
 
   const updateFeedback = (feedbackType) => {
-    setViews((prev) => ({
-      ...prev,
-      [feedbackType]: prev[feedbackType] + 1,
+    setViews((views) => ({
+      ...views,
+      [feedbackType]: views[feedbackType] + 1,
     }));
+  };
+
+  const total = views.good + views.neutral + views.bad;
+
+  const resetFeedback = () => {
+    setViews({
+      good: 0,
+      neutral: 0,
+      bad: 0,
+    });
   };
 
   return (
     <>
       <Description />
-      <Option updateFeedback={updateFeedback} />
-      <Feedback {...views} />
+      <Option
+        updateFeedback={updateFeedback}
+        total={total}
+        resetFeedback={resetFeedback}
+      />
+      <Feedback {...views} total={total} />
     </>
   );
 };

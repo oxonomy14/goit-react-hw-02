@@ -1,7 +1,9 @@
 import css from "./Feedback.module.css";
 
-const Feedback = ({ good, neutral, bad }) => {
-  const total = good + neutral + bad;
+const Feedback = ({ good, neutral, bad, total }) => {
+  {
+    /* const total = good + neutral + bad; */
+  }
 
   if (total === 0) {
     return <p>No feedback yet</p>;
