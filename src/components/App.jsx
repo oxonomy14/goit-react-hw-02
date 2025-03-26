@@ -4,6 +4,7 @@ import "./App.css";
 
 import Description from "./Description/Description";
 import Option from "./Option/Option";
+import Notification from "./Notification/Notification";
 import Feedback from "./Feedback/Feedback";
 
 const App = () => {
@@ -20,7 +21,7 @@ const App = () => {
     }));
   };
 
-  const total = views.good + views.neutral + views.bad;
+  const totalFeedback = views.good + views.neutral + views.bad;
 
   const resetFeedback = () => {
     setViews({
@@ -35,10 +36,11 @@ const App = () => {
       <Description />
       <Option
         updateFeedback={updateFeedback}
-        total={total}
+        totalFeedback={totalFeedback}
         resetFeedback={resetFeedback}
       />
-      <Feedback {...views} total={total} />
+      <Notification totalFeedback={totalFeedback} />
+      <Feedback {...views} totalFeedback={totalFeedback} />
     </>
   );
 };
