@@ -29,6 +29,9 @@ const App = () => {
 
   const totalFeedback = views.good + views.neutral + views.bad;
 
+  const positiveFeedback =
+    totalFeedback > 0 ? Math.round((views.good / totalFeedback) * 100) : 0;
+
   useEffect(() => {
     window.localStorage.setItem("feedback", JSON.stringify(views));
   }, [views]);
@@ -50,7 +53,11 @@ const App = () => {
         resetFeedback={resetFeedback}
       />
       {totalFeedback > 0 ? (
-        <Feedback {...views} totalFeedback={totalFeedback} />
+        <Feedback
+          {...views}
+          totalFeedback={totalFeedback}
+          positiveFeedback={positiveFeedback}
+        />
       ) : (
         <Notification />
       )}
