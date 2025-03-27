@@ -8,7 +8,7 @@ const Description = () => {
       </h2>
       <p>
         Please leave your feedback <span>about</span> our service
-        <span>by</span> selecting one <span>of the</span>
+        <span>by</span> selecting one <span> of the</span>
         options <span>below</span>.
       </p>
     </div>
